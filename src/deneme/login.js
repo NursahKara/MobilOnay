@@ -82,7 +82,8 @@ export default class Home extends Component {
         return (
             <SafeAreaView>
                 <ImageBackground source={require("../../assets/images/bg1.png")}
-                    style={{ height: "100%", width: "100%",}}>
+                resizeMode="cover"
+                    style={{ height: height, width: "100%"}}>
                     <ScrollView style={{ flex: 1 }}>
 
                         <View style={{ marginTop: height / 3, flex: 1, marginRight: 5 }}>

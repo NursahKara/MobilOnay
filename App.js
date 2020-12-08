@@ -11,8 +11,19 @@ import PushNotification from 'react-native-push-notification';
 import BackgroundTask from 'react-native-background-task';
 import { signalrConn, backgroundTaskConn, read } from './src/service/loginFetch';
 import AsyncStorage from "@react-native-community/async-storage";
-import BackgroundTimer from 'react-native-background-timer';
+import BackgroundJob from 'react-native-background-job';
 
+const backgroundJob = {
+    jobKey: "myJob",
+    job: () => console.log("Running in background")
+};
+BackgroundJob.register(backgroundJob);
+var backgroundSchedule = {
+    jobKey: "myJob",
+}
+
+
+// adb logcat *:S ReactNative:V ReactNativeJS:V BackgroundTask:V
 // PushNotification.requestPermissions().then(() => {
 
 // })
@@ -29,30 +40,45 @@ PushNotification.createChannel(
     },
     (created) => console.log(`createChannel returned '${created}'`) // (optional) callback returns whether the channel was created, false means it already existed.
 );
-BackgroundTask.define(() => {
-    console.log('Hello from a background task');
-    // notificationHub.on("ReceiveNotifications", function (notification) {
-    //     console.log(notification);
-    //     PushNotification.localNotification({
-    //         title: notification.title,
-    //         message: notification.message,
-    //         vibrate: true,
-    //         playSound: true,
-    //         color:"yellow"
-    //     });
-    //     notificationHub.invoke('MarkNotificationsAsReceived')
-    //         .fail(() => {
-    //             console.warn('error when calling MarkNotificationsAsReceived backgrountask')
-    //         })
-    BackgroundTask.finish();
-    // });
-    // connection.start().done(() => {
-    //     console.log('Now connected, connection ID=' + connection.id);
-    // }).fail(() => {
-    //     console.log('Failed BackgroundTask');
-    // });
-})
+// BackgroundTask.define(() => {
+//     console.log('Hello from a background task');
+//     notificationHub.on("ReceiveNotifications", function (notification) {
+//         console.log(notification);
+//         PushNotification.localNotification({
+//             title: notification.title,
+//             message: notification.message,
+//             vibrate: true,
+//             playSound: true,
+//             color:"yellow"
+//         });
+//         notificationHub.invoke('MarkNotificationsAsReceived')
+//             .fail(() => {
+//                 console.warn('error when calling MarkNotificationsAsReceived backgrountask')
+//             })
+//     BackgroundTask.finish();
+//     });
+//     connection.start().done(() => {
+//         console.log('Now connected, connection ID=' + connection.id);
+//     }).fail(() => {
+//         console.log('Failed BackgroundTask');
+//     });
+// })
 
+BackgroundTask.define(
+    async () => {
+        console.log('Hello from a background task')
+
+        // const value = await AsyncStorage.getItem('@MySuperStore:times')
+        // await AsyncStorage.setItem('@MySuperStore:times', `${value || ''}\n${currentTimestamp()}`)
+
+        // Or, instead of just setting a timestamp, do an http request
+        const response = await fetch('http://worldclockapi.com/api/json/utc/now')
+        const text = await response.text()
+        await AsyncStorage.setItem('@MySuperStore:times', text)
+
+        BackgroundTask.finish()
+    },
+)
 export default class App extends Component {
     constructor(props) {
         super(props);
@@ -63,7 +89,10 @@ export default class App extends Component {
 
     }
     componentDidMount() {
-        BackgroundTask.schedule();
+
+        BackgroundJob.schedule(backgroundSchedule)
+            .then(() => console.log("Success"))
+            .catch(err => console.err(err));
 
         this.readStore().then(() => {
             if (this.state.token != '') {
@@ -76,6 +105,8 @@ export default class App extends Component {
     readStore = async () => {
         try {
             const tokenValueRaw = await AsyncStorage.getItem("token");
+            const asd = await AsyncStorage.getItem("@MySuperStore:times");
+            console.log("asd:", asd);
             const tokenValue = JSON.parse(tokenValueRaw) ?? [];
             this.setState({ token: tokenValue })
 
@@ -97,17 +128,17 @@ export default class App extends Component {
 
 
             // PushNotification.requestPermissions().then(()=>{
-                PushNotification.localNotification({
-                    title: notification.Title,
-                    message: notification.Message,
-                    vibrate: true,
-                    channelId: "channel-id",
-                    category: notification.Category,
-                    ignoreInForeground: false,
-                    largeIconUrl: "https://pngimg.com/uploads/butterfly/butterfly_PNG1040.png",
-                    color: "purple",
+            PushNotification.localNotification({
+                title: notification.Title,
+                message: notification.Message,
+                vibrate: true,
+                channelId: "channel-id",
+                category: notification.Category,
+                ignoreInForeground: false,
+                largeIconUrl: "https://pngimg.com/uploads/butterfly/butterfly_PNG1040.png",
+                color: "purple",
 
-                });
+            });
             // })
 
 
@@ -141,36 +172,9 @@ export default class App extends Component {
         }).fail((error) => {
             console.log('Failedddddd', error);
         });
-
-        // BackgroundTask.define(() => {
-        //     console.log('Hello from a background task');
-        //     notificationHub.on("ReceiveNotifications", function (notification) {
-        //         console.log(notification);
-        //         PushNotification.localNotification({
-        //             title: notification.title,
-        //             message: notification.message,
-        //             vibrate: true,
-        //             playSound: true,
-        //             color:"yellow"
-        //         });
-        //         notificationHub.invoke('MarkNotificationsAsReceived')
-        //             .fail(() => {
-        //                 console.warn('error when calling MarkNotificationsAsReceived backgrountask')
-        //             })
-        //         BackgroundTask.finish();
-        //     });
-        //     connection.start().done(() => {
-        //         console.log('Now connected, connection ID=' + connection.id);
-        //     }).fail(() => {
-        //         console.log('Failed BackgroundTask');
-        //     });
-        // })
-
-
     }
 
     render() {
-
         this.signalrConnection();
         return (
             <Router />

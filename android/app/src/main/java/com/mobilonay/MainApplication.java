@@ -4,6 +4,9 @@ import android.app.Application;
 import android.content.Context;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
+import com.pilloxa.backgroundjob.BackgroundJobPackage;
+import com.pilloxa.backgroundjob.BackgroundJobPackage;
+import com.jamesisaac.rnbackgroundtask.BackgroundTaskPackage;
 import com.ocetnik.timer.BackgroundTimerPackage;
 import com.jamesisaac.rnbackgroundtask.BackgroundTaskPackage;
 import com.facebook.react.ReactInstanceManager;
@@ -14,6 +17,7 @@ import java.lang.reflect.InvocationTargetException;
 import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
 import java.util.List;
 import com.oblador.vectoricons.VectorIconsPackage; 
+import com.pilloxa.backgroundjob.BackgroundJobPackage;
 public class MainApplication extends Application implements ReactApplication {
 
   private final ReactNativeHost mReactNativeHost =
@@ -28,7 +32,7 @@ public class MainApplication extends Application implements ReactApplication {
           @SuppressWarnings("UnnecessaryLocalVariable")
           List<ReactPackage> packages = new PackageList(this).getPackages();
           // Packages that cannot be autolinked yet can be added manually here, for example:
-          // packages.add(new MyReactNativePackage());
+          //packages.add(new BackgroundJobPackage());
           return packages;
         }
 
@@ -45,10 +49,10 @@ public class MainApplication extends Application implements ReactApplication {
 
   @Override
   public void onCreate() {
-    super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
     initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
-  BackgroundTaskPackage.useContext(this);
+    BackgroundTaskPackage.useContext(this);
+    super.onCreate();
   }
 
   /**
