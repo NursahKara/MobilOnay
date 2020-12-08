@@ -13,20 +13,50 @@ import { signalrConn, backgroundTaskConn, read } from './src/service/loginFetch'
 import AsyncStorage from "@react-native-community/async-storage";
 import BackgroundJob from 'react-native-background-job';
 
+// const backgroundJob = {
+//     jobKey: "myJob",
+//     job: () => 
+//     {
+//         console.log("Running in background");
+       
+
+//             PushNotification.localNotification({
+//                 title: "Baslik",
+//                 message: "Mesaj",
+//                 vibrate: true,
+//                 channelId: "channel-id",
+//                 category: "Kategori",
+//                 ignoreInForeground: false,
+//                 largeIconUrl: "https://pngimg.com/uploads/butterfly/butterfly_PNG1040.png",
+//                 color: "purple",
+
+//             });
+//             console.log("bitti");
+
+//     }
+    
+// };
+// BackgroundJob.register(backgroundJob);
+// var backgroundSchedule = {
+//     jobKey: "myJob",
+// }
+
 const backgroundJob = {
     jobKey: "myJob",
-    job: () => console.log("Running in background")
-};
-BackgroundJob.register(backgroundJob);
-var backgroundSchedule = {
+    job: () => console.log("RUNNING IN BACKGROUND2")
+   };
+   
+   BackgroundJob.register(backgroundJob);
+   
+   var backgroundSchedule = {
     jobKey: "myJob",
-}
+   }
+   
+   BackgroundJob.schedule(backgroundSchedule)
+     .then(() => console.log("SUCCESS DIS2"))
+     .catch(err => console.err(err));
+     
 
-
-// adb logcat *:S ReactNative:V ReactNativeJS:V BackgroundTask:V
-// PushNotification.requestPermissions().then(() => {
-
-// })
 
 PushNotification.createChannel(
     {
@@ -40,6 +70,7 @@ PushNotification.createChannel(
     },
     (created) => console.log(`createChannel returned '${created}'`) // (optional) callback returns whether the channel was created, false means it already existed.
 );
+
 // BackgroundTask.define(() => {
 //     console.log('Hello from a background task');
 //     notificationHub.on("ReceiveNotifications", function (notification) {
@@ -64,21 +95,22 @@ PushNotification.createChannel(
 //     });
 // })
 
-BackgroundTask.define(
-    async () => {
-        console.log('Hello from a background task')
+// BackgroundTask.define(
+//     async () => {
+//         console.log('Hello from a background task')
 
-        // const value = await AsyncStorage.getItem('@MySuperStore:times')
-        // await AsyncStorage.setItem('@MySuperStore:times', `${value || ''}\n${currentTimestamp()}`)
+//         // const value = await AsyncStorage.getItem('@MySuperStore:times')
+//         // await AsyncStorage.setItem('@MySuperStore:times', `${value || ''}\n${currentTimestamp()}`)
 
-        // Or, instead of just setting a timestamp, do an http request
-        const response = await fetch('http://worldclockapi.com/api/json/utc/now')
-        const text = await response.text()
-        await AsyncStorage.setItem('@MySuperStore:times', text)
+//         // Or, instead of just setting a timestamp, do an http request
+//         const response = await fetch('http://worldclockapi.com/api/json/utc/now')
+//         const text = await response.text()
+//         await AsyncStorage.setItem('@MySuperStore:times', text)
 
-        BackgroundTask.finish()
-    },
-)
+//         BackgroundTask.finish()
+//     },
+// )
+
 export default class App extends Component {
     constructor(props) {
         super(props);
@@ -88,16 +120,28 @@ export default class App extends Component {
         }
 
     }
+    // backgroundJob=()=>{
+    //     const backgroundJob = {
+    //         jobKey: "myJob",
+    //         job: () => console.log("Running in background")
+    //     };
+    //     BackgroundJob.register(backgroundJob);
+    //     var backgroundSchedule = {
+    //         jobKey: "myJob",
+    //     }
+        
+    // }
     componentDidMount() {
-
         BackgroundJob.schedule(backgroundSchedule)
-            .then(() => console.log("Success"))
-            .catch(err => console.err(err));
+        .then(() => console.log("SUCCESS COMPONENT 2"))
+        .catch(err => console.err(err));
+        // BackgroundJob.schedule(backgroundSchedule)
+        //     .then(() => console.log("Success"))
+        //     .catch(err => console.err(err));
 
         this.readStore().then(() => {
             if (this.state.token != '') {
                 Actions.home({ token: this.state.token })
-                console.log("asdasdad", this.state.token)
             }
         });
     }
@@ -105,8 +149,8 @@ export default class App extends Component {
     readStore = async () => {
         try {
             const tokenValueRaw = await AsyncStorage.getItem("token");
-            const asd = await AsyncStorage.getItem("@MySuperStore:times");
-            console.log("asd:", asd);
+            // const asd = await AsyncStorage.getItem("@MySuperStore:times");
+            // console.log("asd:", asd);
             const tokenValue = JSON.parse(tokenValueRaw) ?? [];
             this.setState({ token: tokenValue })
 
@@ -125,9 +169,6 @@ export default class App extends Component {
             console.log("responsenotificationsssss", response);
             var notification = response.notification;
 
-
-
-            // PushNotification.requestPermissions().then(()=>{
             PushNotification.localNotification({
                 title: notification.Title,
                 message: notification.Message,
@@ -139,7 +180,6 @@ export default class App extends Component {
                 color: "purple",
 
             });
-            // })
 
 
 
@@ -176,6 +216,9 @@ export default class App extends Component {
 
     render() {
         this.signalrConnection();
+        BackgroundJob.schedule(backgroundSchedule)
+        .then(() => console.log("SUCCESS RENDER 2"))
+        .catch(err => console.err(err));
         return (
             <Router />
         )
