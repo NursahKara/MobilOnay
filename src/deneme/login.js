@@ -31,7 +31,7 @@ export default class Home extends Component {
     }
 
     fetchToken = () => {
-        fetch('http://192.168.41.182/NotificationWebService/Token', {
+        fetch('http://192.168.43.210/NotificationWebService/Token', {
             method: 'POST',
             body: 'grant_type=password&username=' + this.state.username + '&password=' + this.state.password
         })
@@ -78,7 +78,6 @@ export default class Home extends Component {
     }
 
     render() {
-        console.log("renderToken:", this.state.token)
         return (
             <SafeAreaView>
                 <ImageBackground source={require("../../assets/images/bg1.png")}
