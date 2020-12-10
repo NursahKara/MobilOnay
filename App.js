@@ -12,7 +12,7 @@ import BackgroundTask from 'react-native-background-task';
 import { signalrConn, backgroundTaskConn, read } from './src/service/loginFetch';
 import AsyncStorage from "@react-native-community/async-storage";
 
-const connection = signalr.hubConnection('http://192.168.43.210/NotificationWebService');
+const connection = signalr.hubConnection('http://192.168.41.182/NotificationWebService');
 
 PushNotification.configure({
     onNotification: async function (notification) {
@@ -36,6 +36,7 @@ PushNotification.configure({
     },
     requestPermissions: false
 });
+
 BackgroundTask.define(async () => {
     console.log('HELLO FROM BACKGROUND TASK')
 
@@ -70,12 +71,13 @@ BackgroundTask.define(async () => {
     connection.start().done(() => {
         console.log('Now connected, connection ID=' + connection.id);
     }).fail((error) => {
-        console.log('Failedddddd', error);
+        console.log('Failed backgroundtask', error);
     });
 
     console.log('HELLO FROM BACKGROUND TASK FINISH')
     BackgroundTask.finish()
 })
+
 BackgroundTask.schedule();
 
 PushNotification.createChannel(
@@ -90,9 +92,6 @@ PushNotification.createChannel(
     },
     (created) => console.log(`createChannel returned '${created}'`) // (optional) callback returns whether the channel was created, false means it already existed.
 );
-
-
-
 
 
 export default class App extends Component {
@@ -124,6 +123,7 @@ export default class App extends Component {
             console.error(e)
         }
     }
+    
     signalrConnection = () => {
         const { token } = this.state;
         connection.qs = { "bearer": token };
@@ -156,7 +156,7 @@ export default class App extends Component {
         connection.start().done(() => {
             console.log('Now connected, connection ID=' + connection.id);
         }).fail((error) => {
-            console.log('Failedddddd', error);
+            console.log('Failed Main', error);
         });
     }
 

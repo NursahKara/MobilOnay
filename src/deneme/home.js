@@ -19,11 +19,6 @@ function HomeScreen() {
                     <View style={{alignItems:'flex-start',flex:1}}>
                         <Text style={styles.headerText}>Hoşgeldin Kullanıcı</Text>
                     </View>
-                    {/* <View style={{alignItems:'flex-end',flex:2}}>
-                        <Image source={require("../../images/signout.png")} style={{ height: 40, width: 40 }} />
-
-
-                    </View> */}
                 </View>
                 <TouchableOpacity
                     onPress={() => Actions.purchaseOrderList()}
