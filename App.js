@@ -1,15 +1,9 @@
 import React, { Component } from 'react';
-import {
-    DeviceEventEmitter,
-    NativeAppEventEmitter,
-    Platform,
-} from 'react-native'
-import Router from './src/deneme/router';
+import Router from './src/router';
 import { Actions } from 'react-native-router-flux';
 import signalr from 'react-native-signalr';
-import PushNotification, { PushNotificationOptions } from 'react-native-push-notification';
+import PushNotification from 'react-native-push-notification';
 import BackgroundTask from 'react-native-background-task';
-import { signalrConn, backgroundTaskConn, read } from './src/service/loginFetch';
 import AsyncStorage from "@react-native-community/async-storage";
 
 const connection = signalr.hubConnection('http://192.168.41.182/NotificationWebService');
@@ -32,7 +26,10 @@ PushNotification.configure({
         }).fail((error) => {
             console.log('Failed configure', error);
         });
-        Actions.purchaseOrderList();
+        if(notification.category==="ALIŞVERİŞ")
+            Actions.purchaseOrderList();
+        else
+            Actions.screen2();
     },
     requestPermissions: false
 });
@@ -46,6 +43,7 @@ BackgroundTask.define(async () => {
     connection.qs = { "bearer": tokenValue };
     connection.logging = false;
     const notificationHub = connection.createHubProxy(`notificationHub`);
+
     notificationHub.on("ReceiveNotifications", function (response) {
         var notification = response.notification;
 
@@ -59,9 +57,8 @@ BackgroundTask.define(async () => {
             largeIconUrl: "https://pngimg.com/uploads/butterfly/butterfly_PNG1040.png",
             color: "purple",
             ongoing: false,
-
-
         });
+
         notificationHub.invoke('MarkNotificationsAsReceived')
             .fail(() => {
                 console.warn('error when calling MarkNotificationsAsReceived')
@@ -99,9 +96,7 @@ export default class App extends Component {
         super(props);
         this.state = {
             token: '',
-            clicked: false
         }
-
     }
 
     componentDidMount() {
@@ -145,13 +140,10 @@ export default class App extends Component {
                 playSound: true,
                 tag: notification.Guid
             });
-            PushNotification.userInteraction
-
             notificationHub.invoke('MarkNotificationsAsReceived')
                 .fail(() => {
                     console.warn('error when calling MarkNotificationsAsReceived')
                 })
-
         });
         connection.start().done(() => {
             console.log('Now connected, connection ID=' + connection.id);

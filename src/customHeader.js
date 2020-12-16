@@ -6,7 +6,15 @@ export default class CustomHeader extends Component {
   render() {
     return (
       <View style={{
-        flexDirection: 'row', height: 60,justifyContent:'center'
+        flexDirection: 'row', height: 60,justifyContent:'center',shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 5,
+        },
+        shadowOpacity: 1,
+        shadowRadius: 3.84,
+        elevation: 2,
+        borderBottomWidth:0.1 
       
       }}>
         <View style={{ flex: 1, justifyContent: 'center' }}>
@@ -24,7 +32,7 @@ export default class CustomHeader extends Component {
               >
                 <Icon
                   name='chevron-left'
-                  color="white"
+                  color="teal"
                   size={25}
                   style={{marginLeft: 10,justifyContent:'center'}}
               />
@@ -33,7 +41,7 @@ export default class CustomHeader extends Component {
 
         </View>
         <View style={{ flex: 12, justifyContent: 'center' }}>
-              <Text style={{ textAlign: 'center', color: 'white',fontSize:25,fontWeight:'bold' }}>
+              <Text style={{ textAlign: 'center', color: this.props.color,fontSize:25,fontWeight:'bold' }}>
                 {this.props.title}
               </Text>
         </View>

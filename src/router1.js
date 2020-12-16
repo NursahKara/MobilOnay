@@ -1,9 +1,10 @@
 //bu dosyada tüm navigasyon işlemleri dönecek
 import React from 'react';
 import { Scene, Router } from 'react-native-router-flux';
-import LoginScreen from './login';
-import HomeScreen from './home';
-import PurchaseOrderListScreen from './purchaseOrderList';
+import LoginScreen from './screen/login';
+import HomeScreen from './screen/home';
+import PurchaseOrderListScreen from './screen/purchaseOrderList';
+
 
 const RouterComp = () => {
     return (
@@ -21,14 +22,14 @@ const RouterComp = () => {
                         title='Home'
                         hideNavBar={true}
                     />
-                    <Scene key='purchaseOrderList'
+                      <Scene key='purchaseOrderList'
                         component={PurchaseOrderListScreen}
                         title='PurchaseOrderList'
                         hideNavBar={true}
                     />
                 </Scene>
-
-
+               
+               
             </Scene>
         </Router>
     )

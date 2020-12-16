@@ -12,8 +12,6 @@ function HomeScreen() {
                 onPress={logout}
                 style={{marginTop:10,flex:1,flexDirection:'row-reverse',paddingLeft:15,paddingTop:5}}>
                     <Image source={require("../../assets/images/signout.png")} style={{ height: 40, width: 40}} />
-
-                    
                 </TouchableOpacity>
                 <View style={styles.header}>
                     <View style={{alignItems:'flex-start',flex:1}}>

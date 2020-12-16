@@ -1,14 +1,7 @@
 import React, { Component } from 'react';
 import {
-    SafeAreaView,
-    StyleSheet,
-    ScrollView,
-    View,
-    Text,
-    StatusBar,
-    TouchableOpacity,
-    Image,
-    ImageBackground,
+    StyleSheet,ScrollView,View,Text,
+    TouchableOpacity,ImageBackground,
     Dimensions
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
@@ -190,6 +183,7 @@ export default class PurchaseOrderListScreen extends Component {
         )
     }
 }
+
 const styles = StyleSheet.create({
     ImageContainer: {
         flex: 1,

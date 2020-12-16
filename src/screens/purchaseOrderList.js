@@ -18,29 +18,29 @@ export default class PurchaseOrderListScreen extends Component {
     render() {
         return (
             <ImageBackground
-                source={require('../../assets/images/ust.png')}
+                source={require('../../assets/images/wave.png')}
                 style={styles.ImageContainer}
             >
                 <View>
-                    <CustomHeader title="Satın Alma Talepleri" isHome={false} bg_white={true} navigation={this.props.navigation} />
-                    <ScrollView style={{ marginTop: 100,marginBottom:70}}>
+                    <CustomHeader title="Satın Alma Talepleri" isHome={false} color={"teal"} navigation={this.props.navigation} />
+                    <ScrollView style={{ marginTop: 20,marginBottom:70}}>
                         <TouchableOpacity
                             onPress={() => Actions.purchaseOrderList()}
                             style={styles.card}>
                             <View style={{ flexDirection: 'row',marginBottom:5, flex:1 }}>
-                                <Text style={{ fontSize: 12, color: '#514bb5',flex:3 }}>Sipariş No: </Text>
+                                <Text style={{ fontSize: 12, color: '#008080',flex:3 }}>Sipariş No: </Text>
                                 <Text style={{ fontSize: 12, fontWeight: 'bold' ,flex:9}}>70772 </Text>
                             </View>
                             <View style={{ flexDirection: 'row' ,marginBottom:5, flex:1 }}>
-                                <Text style={{ fontSize: 12, color: '#514bb5',flex:3 }}>Tedarikçi : </Text>
+                                <Text style={{ fontSize: 12, color: '#008080',flex:3 }}>Tedarikçi : </Text>
                                 <Text style={{ fontSize: 12, fontWeight: 'bold', flex:9 }}>NALCO ANADOLU KİMYA SAN. VE TİC. LTD. ŞTİ. </Text>
                             </View>
                             <View style={{ flexDirection: 'row',marginBottom:5, flex:1  }}>
-                                <Text style={{ fontSize: 12, color: '#514bb5',flex:3 }}>Site : </Text>
+                                <Text style={{ fontSize: 12, color: '#008080',flex:3 }}>Site : </Text>
                                 <Text style={{ fontSize: 12, fontWeight: 'bold',flex:9 }}>LOTUS </Text>
                             </View>
                             <View style={{ flexDirection: 'row' ,marginBottom:5 , flex:1}}>
-                                <Text style={{ fontSize: 12, color: '#514bb5',flex:3 }}>İhtiyaç Tarihi: </Text>
+                                <Text style={{ fontSize: 12, color: '#008080',flex:3 }}>İhtiyaç Tarihi: </Text>
                                 <Text style={{ fontSize: 12, fontWeight: 'bold',flex:9 }}>01.12.2020 </Text>
                             </View>
                         </TouchableOpacity>
@@ -48,19 +48,19 @@ export default class PurchaseOrderListScreen extends Component {
                             onPress={() => Actions.purchaseOrderList()}
                             style={styles.card}>
                             <View style={{ flexDirection: 'row',marginBottom:5, flex:1 }}>
-                                <Text style={{ fontSize: 12, color: '#514bb5',flex:3 }}>Sipariş No: </Text>
+                                <Text style={{ fontSize: 12, color: '#008080',flex:3 }}>Sipariş No: </Text>
                                 <Text style={{ fontSize: 12, fontWeight: 'bold' ,flex:9}}>70772 </Text>
                             </View>
                             <View style={{ flexDirection: 'row' ,marginBottom:5, flex:1 }}>
-                                <Text style={{ fontSize: 12, color: '#514bb5',flex:3 }}>Tedarikçi : </Text>
+                                <Text style={{ fontSize: 12, color: '#008080',flex:3 }}>Tedarikçi : </Text>
                                 <Text style={{ fontSize: 12, fontWeight: 'bold', flex:9 }}>NALCO ANADOLU KİMYA SAN. VE TİC. LTD. ŞTİ. </Text>
                             </View>
                             <View style={{ flexDirection: 'row',marginBottom:5, flex:1  }}>
-                                <Text style={{ fontSize: 12, color: '#514bb5',flex:3 }}>Site : </Text>
+                                <Text style={{ fontSize: 12, color: '#008080',flex:3 }}>Site : </Text>
                                 <Text style={{ fontSize: 12, fontWeight: 'bold',flex:9 }}>LOTUS </Text>
                             </View>
                             <View style={{ flexDirection: 'row' ,marginBottom:5 , flex:1}}>
-                                <Text style={{ fontSize: 12, color: '#514bb5',flex:3 }}>İhtiyaç Tarihi: </Text>
+                                <Text style={{ fontSize: 12, color: '#008080',flex:3 }}>İhtiyaç Tarihi: </Text>
                                 <Text style={{ fontSize: 12, fontWeight: 'bold',flex:9 }}>01.12.2020 </Text>
                             </View>
                         </TouchableOpacity>
@@ -68,19 +68,19 @@ export default class PurchaseOrderListScreen extends Component {
                             onPress={() => Actions.purchaseOrderList()}
                             style={styles.card}>
                             <View style={{ flexDirection: 'row',marginBottom:5, flex:1 }}>
-                                <Text style={{ fontSize: 12, color: '#514bb5',flex:3 }}>Sipariş No: </Text>
+                                <Text style={{ fontSize: 12, color: '#008080',flex:3 }}>Sipariş No: </Text>
                                 <Text style={{ fontSize: 12, fontWeight: 'bold' ,flex:9}}>70772 </Text>
                             </View>
                             <View style={{ flexDirection: 'row' ,marginBottom:5, flex:1 }}>
-                                <Text style={{ fontSize: 12, color: '#514bb5',flex:3 }}>Tedarikçi : </Text>
+                                <Text style={{ fontSize: 12, color: '#008080',flex:3 }}>Tedarikçi : </Text>
                                 <Text style={{ fontSize: 12, fontWeight: 'bold', flex:9 }}>NALCO ANADOLU KİMYA SAN. VE TİC. LTD. ŞTİ. </Text>
                             </View>
                             <View style={{ flexDirection: 'row',marginBottom:5, flex:1  }}>
-                                <Text style={{ fontSize: 12, color: '#514bb5',flex:3 }}>Site : </Text>
+                                <Text style={{ fontSize: 12, color: '#008080',flex:3 }}>Site : </Text>
                                 <Text style={{ fontSize: 12, fontWeight: 'bold',flex:9 }}>LOTUS </Text>
                             </View>
                             <View style={{ flexDirection: 'row' ,marginBottom:5 , flex:1}}>
-                                <Text style={{ fontSize: 12, color: '#514bb5',flex:3 }}>İhtiyaç Tarihi: </Text>
+                                <Text style={{ fontSize: 12, color: '#008080',flex:3 }}>İhtiyaç Tarihi: </Text>
                                 <Text style={{ fontSize: 12, fontWeight: 'bold',flex:9 }}>01.12.2020 </Text>
                             </View>
                         </TouchableOpacity>
@@ -88,19 +88,19 @@ export default class PurchaseOrderListScreen extends Component {
                             onPress={() => Actions.purchaseOrderList()}
                             style={styles.card}>
                             <View style={{ flexDirection: 'row',marginBottom:5, flex:1 }}>
-                                <Text style={{ fontSize: 12, color: '#514bb5',flex:3 }}>Sipariş No: </Text>
+                                <Text style={{ fontSize: 12, color: '#008080',flex:3 }}>Sipariş No: </Text>
                                 <Text style={{ fontSize: 12, fontWeight: 'bold' ,flex:9}}>70772 </Text>
                             </View>
                             <View style={{ flexDirection: 'row' ,marginBottom:5, flex:1 }}>
-                                <Text style={{ fontSize: 12, color: '#514bb5',flex:3 }}>Tedarikçi : </Text>
+                                <Text style={{ fontSize: 12, color: '#008080',flex:3 }}>Tedarikçi : </Text>
                                 <Text style={{ fontSize: 12, fontWeight: 'bold', flex:9 }}>NALCO ANADOLU KİMYA SAN. VE TİC. LTD. ŞTİ. </Text>
                             </View>
                             <View style={{ flexDirection: 'row',marginBottom:5, flex:1  }}>
-                                <Text style={{ fontSize: 12, color: '#514bb5',flex:3 }}>Site : </Text>
+                                <Text style={{ fontSize: 12, color: '#008080',flex:3 }}>Site : </Text>
                                 <Text style={{ fontSize: 12, fontWeight: 'bold',flex:9 }}>LOTUS </Text>
                             </View>
                             <View style={{ flexDirection: 'row' ,marginBottom:5 , flex:1}}>
-                                <Text style={{ fontSize: 12, color: '#514bb5',flex:3 }}>İhtiyaç Tarihi: </Text>
+                                <Text style={{ fontSize: 12, color: '#008080',flex:3 }}>İhtiyaç Tarihi: </Text>
                                 <Text style={{ fontSize: 12, fontWeight: 'bold',flex:9 }}>01.12.2020 </Text>
                             </View>
                         </TouchableOpacity>
@@ -108,19 +108,19 @@ export default class PurchaseOrderListScreen extends Component {
                             onPress={() => Actions.purchaseOrderList()}
                             style={styles.card}>
                             <View style={{ flexDirection: 'row',marginBottom:5, flex:1 }}>
-                                <Text style={{ fontSize: 12, color: '#514bb5',flex:3 }}>Sipariş No: </Text>
+                                <Text style={{ fontSize: 12, color: '#008080',flex:3 }}>Sipariş No: </Text>
                                 <Text style={{ fontSize: 12, fontWeight: 'bold' ,flex:9}}>70772 </Text>
                             </View>
                             <View style={{ flexDirection: 'row' ,marginBottom:5, flex:1 }}>
-                                <Text style={{ fontSize: 12, color: '#514bb5',flex:3 }}>Tedarikçi : </Text>
+                                <Text style={{ fontSize: 12, color: '#008080',flex:3 }}>Tedarikçi : </Text>
                                 <Text style={{ fontSize: 12, fontWeight: 'bold', flex:9 }}>NALCO ANADOLU KİMYA SAN. VE TİC. LTD. ŞTİ. </Text>
                             </View>
                             <View style={{ flexDirection: 'row',marginBottom:5, flex:1  }}>
-                                <Text style={{ fontSize: 12, color: '#514bb5',flex:3 }}>Site : </Text>
+                                <Text style={{ fontSize: 12, color: '#008080',flex:3 }}>Site : </Text>
                                 <Text style={{ fontSize: 12, fontWeight: 'bold',flex:9 }}>LOTUS </Text>
                             </View>
                             <View style={{ flexDirection: 'row' ,marginBottom:5 , flex:1}}>
-                                <Text style={{ fontSize: 12, color: '#514bb5',flex:3 }}>İhtiyaç Tarihi: </Text>
+                                <Text style={{ fontSize: 12, color: '#008080',flex:3 }}>İhtiyaç Tarihi: </Text>
                                 <Text style={{ fontSize: 12, fontWeight: 'bold',flex:9 }}>01.12.2020 </Text>
                             </View>
                         </TouchableOpacity>
@@ -128,19 +128,19 @@ export default class PurchaseOrderListScreen extends Component {
                             onPress={() => Actions.purchaseOrderList()}
                             style={styles.card}>
                             <View style={{ flexDirection: 'row',marginBottom:5, flex:1 }}>
-                                <Text style={{ fontSize: 12, color: '#514bb5',flex:3 }}>Sipariş No: </Text>
+                                <Text style={{ fontSize: 12, color: '#008080',flex:3 }}>Sipariş No: </Text>
                                 <Text style={{ fontSize: 12, fontWeight: 'bold' ,flex:9}}>70772 </Text>
                             </View>
                             <View style={{ flexDirection: 'row' ,marginBottom:5, flex:1 }}>
-                                <Text style={{ fontSize: 12, color: '#514bb5',flex:3 }}>Tedarikçi : </Text>
+                                <Text style={{ fontSize: 12, color: '#008080',flex:3 }}>Tedarikçi : </Text>
                                 <Text style={{ fontSize: 12, fontWeight: 'bold', flex:9 }}>NALCO ANADOLU KİMYA SAN. VE TİC. LTD. ŞTİ. </Text>
                             </View>
                             <View style={{ flexDirection: 'row',marginBottom:5, flex:1  }}>
-                                <Text style={{ fontSize: 12, color: '#514bb5',flex:3 }}>Site : </Text>
+                                <Text style={{ fontSize: 12, color: '#008080',flex:3 }}>Site : </Text>
                                 <Text style={{ fontSize: 12, fontWeight: 'bold',flex:9 }}>LOTUS </Text>
                             </View>
                             <View style={{ flexDirection: 'row' ,marginBottom:5 , flex:1}}>
-                                <Text style={{ fontSize: 12, color: '#514bb5',flex:3 }}>İhtiyaç Tarihi: </Text>
+                                <Text style={{ fontSize: 12, color: '#008080',flex:3 }}>İhtiyaç Tarihi: </Text>
                                 <Text style={{ fontSize: 12, fontWeight: 'bold',flex:9 }}>01.12.2020 </Text>
                             </View>
                         </TouchableOpacity>
@@ -148,19 +148,19 @@ export default class PurchaseOrderListScreen extends Component {
                             onPress={() => Actions.purchaseOrderList()}
                             style={styles.card}>
                             <View style={{ flexDirection: 'row',marginBottom:5, flex:1 }}>
-                                <Text style={{ fontSize: 12, color: '#514bb5',flex:3 }}>Sipariş No: </Text>
+                                <Text style={{ fontSize: 12, color: '#008080',flex:3 }}>Sipariş No: </Text>
                                 <Text style={{ fontSize: 12, fontWeight: 'bold' ,flex:9}}>70772 </Text>
                             </View>
                             <View style={{ flexDirection: 'row' ,marginBottom:5, flex:1 }}>
-                                <Text style={{ fontSize: 12, color: '#514bb5',flex:3 }}>Tedarikçi : </Text>
+                                <Text style={{ fontSize: 12, color: '#008080',flex:3 }}>Tedarikçi : </Text>
                                 <Text style={{ fontSize: 12, fontWeight: 'bold', flex:9 }}>NALCO ANADOLU KİMYA SAN. VE TİC. LTD. ŞTİ. </Text>
                             </View>
                             <View style={{ flexDirection: 'row',marginBottom:5, flex:1  }}>
-                                <Text style={{ fontSize: 12, color: '#514bb5',flex:3 }}>Site : </Text>
+                                <Text style={{ fontSize: 12, color: '#008080',flex:3 }}>Site : </Text>
                                 <Text style={{ fontSize: 12, fontWeight: 'bold',flex:9 }}>LOTUS </Text>
                             </View>
                             <View style={{ flexDirection: 'row' ,marginBottom:5 , flex:1}}>
-                                <Text style={{ fontSize: 12, color: '#514bb5',flex:3 }}>İhtiyaç Tarihi: </Text>
+                                <Text style={{ fontSize: 12, color: '#008080',flex:3 }}>İhtiyaç Tarihi: </Text>
                                 <Text style={{ fontSize: 12, fontWeight: 'bold',flex:9 }}>01.12.2020 </Text>
                             </View>
                         </TouchableOpacity>
@@ -168,19 +168,19 @@ export default class PurchaseOrderListScreen extends Component {
                             onPress={() => Actions.purchaseOrderList()}
                             style={styles.card}>
                             <View style={{ flexDirection: 'row',marginBottom:5, flex:1 }}>
-                                <Text style={{ fontSize: 12, color: '#514bb5',flex:3 }}>Sipariş No: </Text>
+                                <Text style={{ fontSize: 12, color: '#008080',flex:3 }}>Sipariş No: </Text>
                                 <Text style={{ fontSize: 12, fontWeight: 'bold' ,flex:9}}>70772 </Text>
                             </View>
                             <View style={{ flexDirection: 'row' ,marginBottom:5, flex:1 }}>
-                                <Text style={{ fontSize: 12, color: '#514bb5',flex:3 }}>Tedarikçi : </Text>
+                                <Text style={{ fontSize: 12, color: '#008080',flex:3 }}>Tedarikçi : </Text>
                                 <Text style={{ fontSize: 12, fontWeight: 'bold', flex:9 }}>NALCO ANADOLU KİMYA SAN. VE TİC. LTD. ŞTİ. </Text>
                             </View>
                             <View style={{ flexDirection: 'row',marginBottom:5, flex:1  }}>
-                                <Text style={{ fontSize: 12, color: '#514bb5',flex:3 }}>Site : </Text>
+                                <Text style={{ fontSize: 12, color: '#008080',flex:3 }}>Site : </Text>
                                 <Text style={{ fontSize: 12, fontWeight: 'bold',flex:9 }}>LOTUS </Text>
                             </View>
                             <View style={{ flexDirection: 'row' ,marginBottom:5 , flex:1}}>
-                                <Text style={{ fontSize: 12, color: '#514bb5',flex:3 }}>İhtiyaç Tarihi: </Text>
+                                <Text style={{ fontSize: 12, color: '#008080',flex:3 }}>İhtiyaç Tarihi: </Text>
                                 <Text style={{ fontSize: 12, fontWeight: 'bold',flex:9 }}>01.12.2020 </Text>
                             </View>
                         </TouchableOpacity>

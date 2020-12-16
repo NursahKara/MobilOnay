@@ -4,7 +4,7 @@ import { Scene, Router } from 'react-native-router-flux';
 import LoginScreen from './screens/login';
 import HomeScreen from './screens/home';
 import PurchaseOrderListScreen from './screens/purchaseOrderList';
-
+import screen2 from './screens/screen2';
 
 const RouterComp = () => {
     return (
@@ -22,14 +22,19 @@ const RouterComp = () => {
                         title='Home'
                         hideNavBar={true}
                     />
-                      <Scene key='purchaseOrderList'
+                    <Scene key='purchaseOrderList'
                         component={PurchaseOrderListScreen}
                         title='PurchaseOrderList'
                         hideNavBar={true}
                     />
+                    <Scene key='screen2'
+                        component={screen2}
+                        title='PurchaseOrderList'
+                        hideNavBar={true}
+                    />
                 </Scene>
-               
-               
+
+
             </Scene>
         </Router>
     )
